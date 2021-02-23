@@ -13,6 +13,7 @@ import { ScrollView } from "react-native"
 
 const Post = ({ route, navigation }) => {
   const post = route.params
+  console.log(post)
   return (
     <ScrollView>
       <Appbar.Header>

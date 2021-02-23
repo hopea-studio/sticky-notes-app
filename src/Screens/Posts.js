@@ -1,7 +1,7 @@
 import React, { useContext } from "react"
 import { postsContext } from "../providers/PostsProvider"
 import { userContext } from "../providers/UsersProvider"
-import { ScrollView } from "react-native"
+import { ScrollView, View } from "react-native"
 import {
   Avatar,
   Paragraph,
@@ -9,8 +9,10 @@ import {
   Button,
   Appbar,
   Text,
+  Caption,
 } from "react-native-paper"
 import { signOut } from "../firebase"
+import moment from "moment"
 
 const Posts = ({ navigation }) => {
   const posts = useContext(postsContext)
@@ -28,7 +30,9 @@ const Posts = ({ navigation }) => {
         <Card.Title
           title={user.displayName}
           subtitle={user.email}
-          left={() => <Avatar.Image size={48} source={user.photoURL} />}
+          left={() => (
+            <Avatar.Image size={48} source={{ uri: user.photoURL }} />
+          )}
           right={() => (
             <Button mode="outlined" onPress={signOut}>
               Logout
@@ -43,12 +47,28 @@ const Posts = ({ navigation }) => {
               key={post.id}
               onPress={() => navigation.navigate("Post", post)}
             >
-              <Card.Title title={post.title} />
+              <Card.Title
+                title={post.title}
+                subtitle={post.user.displayName}
+                left={() => (
+                  <Avatar.Image
+                    size={36}
+                    source={{ uri: post.user.photoURL }}
+                  />
+                )}
+              />
               <Card.Content>
-                <Paragraph>{post.content}</Paragraph>
+                <Paragraph>
+                  {post.content.slice(0, 100)} {"...."}
+                </Paragraph>
+                <Caption>
+                  Created At: {moment(post.createdAt.toDate()).calendar()}
+                </Caption>
               </Card.Content>
               <Card.Actions>
-                <Text>⭐️ {post.stars}</Text>
+                <Button>
+                  <Text>⭐️ {post.stars}</Text>
+                </Button>
               </Card.Actions>
             </Card>
           )

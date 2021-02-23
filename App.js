@@ -3,6 +3,7 @@ import UsersProvider from "./src/providers/UsersProvider"
 import App from "./src/index"
 import PostsProvider from "./src/providers/PostsProvider"
 import { DefaultTheme, Provider as PaperProvider } from "react-native-paper"
+import { NavigationContainer } from "@react-navigation/native"
 
 const colorHue = {
   background: "#004643",
@@ -27,12 +28,14 @@ const theme = {
 
 export default function Main() {
   return (
-    <UsersProvider>
-      <PostsProvider>
-        <PaperProvider theme={theme}>
-          <App />
-        </PaperProvider>
-      </PostsProvider>
-    </UsersProvider>
+    <NavigationContainer>
+      <UsersProvider>
+        <PostsProvider>
+          <PaperProvider theme={theme}>
+            <App />
+          </PaperProvider>
+        </PostsProvider>
+      </UsersProvider>
+    </NavigationContainer>
   )
 }
