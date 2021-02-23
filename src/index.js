@@ -8,6 +8,7 @@ import { useContext } from "react"
 import LandingScreen from "./Screens/Landing"
 import LoginScreen from "./Screens/Login"
 import PostsScreen from "./Screens/Posts"
+import RegisterScreen from "./Screens/Register"
 
 const Stack = createStackNavigator()
 
@@ -24,6 +25,7 @@ export default function App() {
             options={{ headerShown: false }}
           />
           <Stack.Screen name="Login" component={LoginScreen} />
+          <Stack.Screen name="Register" component={RegisterScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     )

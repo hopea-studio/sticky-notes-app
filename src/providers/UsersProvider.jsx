@@ -8,7 +8,6 @@ const UsersProvider = ({ children }) => {
 
   useEffect(() => {
     const unsubsribe = auth.onAuthStateChanged((userAuth) => {
-      console.log(userAuth.email)
       setUser(userAuth)
     })
 
