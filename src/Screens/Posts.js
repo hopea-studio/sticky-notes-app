@@ -19,13 +19,23 @@ const Posts = () => {
   return (
     <ScrollView>
       <Appbar.Header>
-        <Appbar.Content title="Posts" subtitle={posts?.length} />
+        <Appbar.Content
+          title="Posts"
+          subtitle={`post number: ${posts?.length}`}
+        />
       </Appbar.Header>
-      <Button mode="outlined" onPress={signOut}>
-        <Text>Logout</Text>
-      </Button>
-      {user && <Text>{user.email}</Text>}
-
+      {user && (
+        <Card.Title
+          title={user.displayName}
+          subtitle={user.email}
+          left={() => <Avatar.Image size={48} source={user.photoURL} />}
+          right={() => (
+            <Button mode="outlined" onPress={signOut}>
+              Logout
+            </Button>
+          )}
+        />
+      )}
       {posts &&
         posts.map((post) => {
           return (

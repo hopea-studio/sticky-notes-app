@@ -2,7 +2,7 @@ import React from "react"
 import { TextInput, Button } from "react-native-paper"
 import { ScrollView } from "react-native"
 import { useState } from "react"
-import { auth } from "../firebase"
+import { auth, createUserProfileDocument } from "../firebase"
 
 const Register = () => {
   const [displayName, setDisplayName] = useState("")
@@ -15,6 +15,7 @@ const Register = () => {
         email,
         password
       )
+      createUserProfileDocument(user, { displayName })
     } catch (error) {
       console.log(error)
     }
