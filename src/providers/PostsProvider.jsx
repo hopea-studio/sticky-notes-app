@@ -13,7 +13,6 @@ const PostsProvider = ({ children }) => {
   useEffect(() => {
     const unsubsribe = firestore.collection("posts").onSnapshot((snapShot) => {
       const post = snapShot.docs.map(docsWithId)
-      console.log(post)
       setPosts(post)
     })
     return () => unsubsribe()

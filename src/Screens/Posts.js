@@ -12,6 +12,10 @@ import {
   Header,
   Body,
   Title,
+  List,
+  ListItem,
+  Card,
+  CardItem,
 } from "native-base"
 import { auth, signOut } from "../firebase"
 
@@ -30,6 +34,25 @@ const Posts = () => {
         <Text>Logout</Text>
       </Button>
       {user && <Text>{user.email}</Text>}
+
+      {posts &&
+        posts.map((post) => {
+          return (
+            <Card key={post.id}>
+              <CardItem header>
+                <Text>{post.title}</Text>
+              </CardItem>
+              <CardItem>
+                <Body>
+                  <Text>{post.content}</Text>
+                </Body>
+              </CardItem>
+              <CardItem footer>
+                <Text>⭐️ {post.stars}</Text>
+              </CardItem>
+            </Card>
+          )
+        })}
     </Container>
   )
 }
