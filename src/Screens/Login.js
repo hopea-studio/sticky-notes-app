@@ -1,14 +1,7 @@
 import React, { useState } from "react"
 //import { signInWithGoogle } from "../firebase"
-import {
-  Container,
-  Content,
-  Input,
-  Item,
-  Form,
-  Button,
-  Text,
-} from "native-base"
+import { TextInput, Button } from "react-native-paper"
+import { ScrollView } from "react-native"
 import { auth } from "../firebase"
 
 const Login = () => {
@@ -27,33 +20,25 @@ const Login = () => {
   }
 
   return (
-    <Container style={{ flex: 1, justifyContent: "center" }}>
-      <Content>
-        <Form>
-          <Item regular>
-            <Input
-              autoCapitalize="none"
-              placeholder="email"
-              value={email}
-              onChangeText={(text) => setEmail(text)}
-            />
-          </Item>
-          <Item regular>
-            <Input
-              autoCapitalize="none"
-              placeholder="password"
-              value={password}
-              onChangeText={(text) => setPassword(text)}
-            />
-          </Item>
-          <Button onPress={handleSubmit}>
-            <Text>Login</Text>
-          </Button>
-        </Form>
-      </Content>
+    <ScrollView>
+      <TextInput
+        autoCapitalize="none"
+        label="email"
+        value={email}
+        onChangeText={(text) => setEmail(text)}
+      />
+
+      <TextInput
+        autoCapitalize="none"
+        label="password"
+        value={password}
+        onChangeText={(text) => setPassword(text)}
+      />
+
+      <Button onPress={handleSubmit}>Login</Button>
 
       {/* <Button title="loginWithGoogle" onPress={signInWithGoogle} /> */}
-    </Container>
+    </ScrollView>
   )
 }
 

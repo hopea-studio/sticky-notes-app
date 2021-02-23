@@ -1,36 +1,27 @@
 import React, { useContext } from "react"
 import { postsContext } from "../providers/PostsProvider"
 import { userContext } from "../providers/UsersProvider"
+import { ScrollView } from "react-native"
 import {
-  Container,
-  Content,
-  Input,
-  Item,
-  Form,
-  Button,
-  Text,
-  Header,
-  Body,
-  Title,
-  List,
-  ListItem,
+  Avatar,
+  Paragraph,
   Card,
-  CardItem,
-} from "native-base"
-import { auth, signOut } from "../firebase"
+  Button,
+  Appbar,
+  Text,
+} from "react-native-paper"
+import { signOut } from "../firebase"
 
 const Posts = () => {
   const posts = useContext(postsContext)
   const user = useContext(userContext)
 
   return (
-    <Container>
-      <Header>
-        <Body>
-          <Title>Posts</Title>
-        </Body>
-      </Header>
-      <Button onPress={signOut}>
+    <ScrollView>
+      <Appbar.Header>
+        <Appbar.Content title="Posts" subtitle={posts?.length} />
+      </Appbar.Header>
+      <Button mode="outlined" onPress={signOut}>
         <Text>Logout</Text>
       </Button>
       {user && <Text>{user.email}</Text>}
@@ -39,21 +30,17 @@ const Posts = () => {
         posts.map((post) => {
           return (
             <Card key={post.id}>
-              <CardItem header>
-                <Text>{post.title}</Text>
-              </CardItem>
-              <CardItem>
-                <Body>
-                  <Text>{post.content}</Text>
-                </Body>
-              </CardItem>
-              <CardItem footer>
+              <Card.Title title={post.title} />
+              <Card.Content>
+                <Paragraph>{post.content}</Paragraph>
+              </Card.Content>
+              <Card.Actions>
                 <Text>⭐️ {post.stars}</Text>
-              </CardItem>
+              </Card.Actions>
             </Card>
           )
         })}
-    </Container>
+    </ScrollView>
   )
 }
 
