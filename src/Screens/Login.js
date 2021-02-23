@@ -10,7 +10,7 @@ const Login = () => {
 
   const handleSubmit = async () => {
     try {
-      const { user } = await auth.signInWithEmailAndPassword(email, password)
+      await auth.signInWithEmailAndPassword(email, password)
     } catch (error) {
       console.log(error)
     }

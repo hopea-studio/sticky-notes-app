@@ -4,12 +4,24 @@ import App from "./src/index"
 import PostsProvider from "./src/providers/PostsProvider"
 import { DefaultTheme, Provider as PaperProvider } from "react-native-paper"
 
+const colorHue = {
+  background: "#004643",
+  headline: "#fffffe",
+  paragraph: "#abd1c6",
+  Button: "#f9bc60",
+  ButtonText: "#001e1d",
+  main: "#e8e4e6",
+  stroke: "#001e1d",
+  Tertiary: "#e16162",
+}
+
 const theme = {
   ...DefaultTheme,
   colors: {
     ...DefaultTheme.colors,
-    primary: "tomato",
+    primary: colorHue.background,
     accent: "yellow",
+    background: colorHue.paragraph,
   },
 }
 

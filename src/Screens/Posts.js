@@ -12,7 +12,7 @@ import {
 } from "react-native-paper"
 import { signOut } from "../firebase"
 
-const Posts = () => {
+const Posts = ({ navigation }) => {
   const posts = useContext(postsContext)
   const user = useContext(userContext)
 
@@ -39,7 +39,10 @@ const Posts = () => {
       {posts &&
         posts.map((post) => {
           return (
-            <Card key={post.id}>
+            <Card
+              key={post.id}
+              onPress={() => navigation.navigate("Post", post)}
+            >
               <Card.Title title={post.title} />
               <Card.Content>
                 <Paragraph>{post.content}</Paragraph>

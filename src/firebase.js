@@ -45,7 +45,6 @@ export const createUserProfileDocument = async (user, additionalData) => {
   const snapshot = await userRef.get()
 
   if (!snapshot.exists) {
-    console.log(user)
     const {
       displayName,
       email,

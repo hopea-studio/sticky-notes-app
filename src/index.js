@@ -9,6 +9,7 @@ import LandingScreen from "./Screens/Landing"
 import LoginScreen from "./Screens/Login"
 import PostsScreen from "./Screens/Posts"
 import RegisterScreen from "./Screens/Register"
+import PostScreen from "./Screens/Post"
 
 const Stack = createStackNavigator()
 
@@ -33,10 +34,15 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Posts">
+      <Stack.Navigator headerMode="screen" initialRouteName="Posts">
         <Stack.Screen
           name="Posts"
           component={PostsScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Post"
+          component={PostScreen}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
