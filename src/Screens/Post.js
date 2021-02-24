@@ -1,28 +1,13 @@
 import React from "react"
-import {
-  Avatar,
-  Paragraph,
-  Card,
-  Button,
-  Appbar,
-  Text,
-} from "react-native-paper"
+import { Paragraph, Card, Appbar, Text } from "react-native-paper"
 import { ScrollView } from "react-native"
-
-//const MORE_ICON = Platform.OS === "ios" ? "dots-horizontal" : "dots-vertical"
 
 const Post = ({ route, navigation }) => {
   const post = route.params
-  //console.log(post)
+
   return (
     <ScrollView>
       <Appbar.Header>
-        {/* <Appbar.Action
-          icon="home"
-          onPress={() => {
-            navigation.navigate("Posts")
-          }}
-        /> */}
         <Appbar.Action
           icon="arrow-left"
           onPress={() => {

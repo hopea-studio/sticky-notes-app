@@ -16,30 +16,32 @@ import { signOut } from "../firebase"
 const Account = ({ navigation }) => {
   const user = useContext(userContext)
   return (
-    <View style={styles.container}>
-      <Appbar.Header>
-        <Appbar.Action
-          icon="arrow-left"
-          onPress={() => {
-            navigation.goBack()
-          }}
-        />
-        <Appbar.Content title="Account" />
-      </Appbar.Header>
-      <View style={styles.body}>
-        <Avatar.Image size={128} source={{ uri: user.photoURL }} />
-        <Headline>{user.displayName}</Headline>
-        <View style={styles.buttons}>
-          <Button style={styles.button} mode="contained" onPress={signOut}>
-            Logout
-          </Button>
-          <Button style={styles.button} mode="contained" onPress={signOut}>
-            Edit
-          </Button>
+    user && (
+      <View style={styles.container}>
+        <Appbar.Header>
+          <Appbar.Action
+            icon="arrow-left"
+            onPress={() => {
+              navigation.goBack()
+            }}
+          />
+          <Appbar.Content title="Account" />
+        </Appbar.Header>
+        <View style={styles.body}>
+          <Avatar.Image size={128} source={{ uri: user.photoURL }} />
+          <Headline>{user.displayName}</Headline>
+          <View style={styles.buttons}>
+            <Button style={styles.button} mode="contained" onPress={signOut}>
+              Logout
+            </Button>
+            <Button style={styles.button} mode="contained" onPress={signOut}>
+              Edit
+            </Button>
+          </View>
         </View>
+        <Appbar style={styles.bottom}></Appbar>
       </View>
-      <Appbar style={styles.bottom}></Appbar>
-    </View>
+    )
   )
 }
 
