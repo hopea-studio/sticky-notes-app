@@ -1,15 +1,8 @@
 import React from "react"
-import {
-  Container,
-  Content,
-  Input,
-  Item,
-  Form,
-  Button,
-  Text,
-} from "native-base"
+import { TextInput, Button } from "react-native-paper"
+import { ScrollView } from "react-native"
 import { useState } from "react"
-import { auth } from "../firebase"
+import { auth, createUserProfileDocument } from "../firebase"
 
 const Register = () => {
   const [displayName, setDisplayName] = useState("")
@@ -22,6 +15,7 @@ const Register = () => {
         email,
         password
       )
+      createUserProfileDocument(user, { displayName })
     } catch (error) {
       console.log(error)
     }
@@ -32,39 +26,31 @@ const Register = () => {
   }
 
   return (
-    <Container>
-      <Content>
-        <Form>
-          <Item regular>
-            <Input
-              autoCapitalize="none"
-              placeholder="display name"
-              value={displayName}
-              onChangeText={(text) => setDisplayName(text)}
-            />
-          </Item>
-          <Item regular>
-            <Input
-              autoCapitalize="none"
-              placeholder="email"
-              value={email}
-              onChangeText={(text) => setEmail(text)}
-            />
-          </Item>
-          <Item regular>
-            <Input
-              autoCapitalize="none"
-              placeholder="password"
-              value={password}
-              onChangeText={(text) => setPassword(text)}
-            />
-          </Item>
-          <Button onPress={handleSubmit}>
-            <Text>Register</Text>
-          </Button>
-        </Form>
-      </Content>
-    </Container>
+    <ScrollView>
+      <TextInput
+        autoCapitalize="none"
+        label="display name"
+        value={displayName}
+        placeholder="Type something"
+        onChangeText={(text) => setDisplayName(text)}
+      />
+
+      <TextInput
+        autoCapitalize="none"
+        label="email"
+        value={email}
+        onChangeText={(text) => setEmail(text)}
+      />
+
+      <TextInput
+        autoCapitalize="none"
+        label="password"
+        value={password}
+        onChangeText={(text) => setPassword(text)}
+      />
+
+      <Button onPress={handleSubmit}>Register</Button>
+    </ScrollView>
   )
 }
 

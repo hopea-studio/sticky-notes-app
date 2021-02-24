@@ -26,6 +26,7 @@ export const provider = new firebase.auth.GoogleAuthProvider()
 export const signInWithGoogle = () => auth.signInWithPopup(provider)
 export const signOut = () => auth.signOut()
 
+//return the user information with provided uid
 export const getUserDocument = async (uid) => {
   if (!uid) return null
   try {
@@ -33,4 +34,39 @@ export const getUserDocument = async (uid) => {
   } catch (error) {
     console.error("error fetching user", error.message)
   }
+}
+
+//added the user to database with additionalData(displayName, etc)
+export const createUserProfileDocument = async (user, additionalData) => {
+  if (!user) return
+
+  const userRef = firestore.doc(`users/${user.uid}`)
+
+  const snapshot = await userRef.get()
+
+  if (!snapshot.exists) {
+    const {
+      displayName,
+      email,
+      photoURL,
+      metadata: { lastSignInTime },
+    } = user
+
+    const createdAt = new Date()
+
+    try {
+      await userRef.set({
+        displayName,
+        email,
+        photoURL,
+        createdAt,
+        lastSignInTime,
+        ...additionalData,
+      })
+    } catch (error) {
+      console.error("error creating user", error.message)
+    }
+  }
+
+  return getUserDocument(user.uid)
 }
