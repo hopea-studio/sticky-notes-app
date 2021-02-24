@@ -11,7 +11,7 @@ import { ScrollView } from "react-native"
 
 //const MORE_ICON = Platform.OS === "ios" ? "dots-horizontal" : "dots-vertical"
 
-const Post = ({ navigation }) => {
+const Post = ({ route, navigation }) => {
   const post = route.params
   //console.log(post)
   return (
