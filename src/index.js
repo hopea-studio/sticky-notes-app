@@ -9,6 +9,8 @@ import LoginScreen from "./Screens/Login"
 import PostsScreen from "./Screens/Posts"
 import RegisterScreen from "./Screens/Register"
 import PostScreen from "./Screens/Post"
+import AccountScreen from "./Screens/Account"
+import NewPostScreen from "./Screens/NewPost"
 
 //import { Appbar } from "react-native-paper"
 
@@ -57,12 +59,22 @@ export default function App() {
       <Stack.Screen
         name="Posts"
         component={PostsScreen}
-        options={{ headerShown: false, title: "Posts" }}
+        options={{ headerShown: false }}
       />
       <Stack.Screen
         name="Post"
         component={PostScreen}
-        options={{ headerShown: false, title: "Post" }}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Account"
+        component={AccountScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="NewPost"
+        component={NewPostScreen}
+        options={{ headerShown: false }}
       />
     </Stack.Navigator>
   )

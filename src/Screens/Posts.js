@@ -1,7 +1,7 @@
 import React, { useContext } from "react"
 import { postsContext } from "../providers/PostsProvider"
 import { userContext } from "../providers/UsersProvider"
-import { ScrollView, View } from "react-native"
+import { ScrollView, StyleSheet } from "react-native"
 import {
   Avatar,
   Paragraph,
@@ -11,7 +11,6 @@ import {
   Text,
   Caption,
 } from "react-native-paper"
-import { signOut } from "../firebase"
 import moment from "moment"
 
 const Posts = ({ navigation }) => {
@@ -19,32 +18,27 @@ const Posts = ({ navigation }) => {
   const user = useContext(userContext)
 
   return (
-    <ScrollView>
+    <ScrollView style={styles.container}>
       <Appbar.Header>
+        <Appbar.Action
+          icon="pencil"
+          onPress={() => navigation.navigate("NewPost")}
+        />
         <Appbar.Content
           title="Posts"
           subtitle={`post number: ${posts?.length}`}
         />
-      </Appbar.Header>
-      {user && (
-        <Card.Title
-          title={user.displayName}
-          subtitle={user.email}
-          left={() => (
-            <Avatar.Image size={48} source={{ uri: user.photoURL }} />
-          )}
-          right={() => (
-            <Button mode="outlined" onPress={signOut}>
-              Logout
-            </Button>
-          )}
+        <Appbar.Action
+          icon="account"
+          onPress={() => navigation.navigate("Account")}
         />
-      )}
+      </Appbar.Header>
       {posts &&
         posts.map((post) => {
           return (
             <Card
               key={post.id}
+              style={styles.card}
               onPress={() => navigation.navigate("Post", post)}
             >
               <Card.Title
@@ -65,10 +59,9 @@ const Posts = ({ navigation }) => {
                   Created At: {moment(post.createdAt.toDate()).calendar()}
                 </Caption>
               </Card.Content>
-              <Card.Actions>
-                <Button>
-                  <Text>⭐️ {post.stars}</Text>
-                </Button>
+              <Card.Actions style={styles.actions}>
+                <Text>⭐️ {post.stars}</Text>
+                <Text>Comments: {post.comments}</Text>
               </Card.Actions>
             </Card>
           )
@@ -76,5 +69,17 @@ const Posts = ({ navigation }) => {
     </ScrollView>
   )
 }
+
+const styles = StyleSheet.create({
+  container: { backgroundColor: "#abd1c6" },
+  card: {
+    margin: 5,
+    backgroundColor: "#ffee58",
+  },
+  actions: {
+    paddingHorizontal: 15,
+    justifyContent: "space-between",
+  },
+})
 
 export default Posts

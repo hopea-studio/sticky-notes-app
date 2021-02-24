@@ -11,18 +11,18 @@ import { ScrollView } from "react-native"
 
 //const MORE_ICON = Platform.OS === "ios" ? "dots-horizontal" : "dots-vertical"
 
-const Post = ({ route, navigation }) => {
+const Post = ({ navigation }) => {
   const post = route.params
-  console.log(post)
+  //console.log(post)
   return (
     <ScrollView>
       <Appbar.Header>
-        <Appbar.Action
+        {/* <Appbar.Action
           icon="home"
           onPress={() => {
             navigation.navigate("Posts")
           }}
-        />
+        /> */}
         <Appbar.Action
           icon="arrow-left"
           onPress={() => {
