@@ -39,7 +39,7 @@ const Posts = ({ navigation }) => {
             <Card
               key={post.id}
               style={styles.card}
-              onPress={() => navigation.navigate("Post", post)}
+              onPress={() => navigation.navigate("Post", { id: post.id })}
             >
               <Card.Title
                 title={post.title}
