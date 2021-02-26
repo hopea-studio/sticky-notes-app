@@ -1,21 +1,49 @@
-import React from "react"
-import { Paragraph, Card, Appbar, Text, List, Avatar } from "react-native-paper"
+import React, { useContext } from "react"
+import {
+  Paragraph,
+  Card,
+  Appbar,
+  Text,
+  List,
+  Avatar,
+  Title,
+  Caption,
+  Button,
+  TextInput,
+} from "react-native-paper"
 import { ScrollView } from "react-native"
 import { useEffect } from "react"
 import { useState } from "react"
 import { firestore } from "../firebase"
+import moment from "moment"
+import PostCard from "../components/PostCard"
+import CommentCard from "../components/CommentCard"
+import { userContext } from "../providers/UsersProvider"
 
 const Post = ({ route, navigation }) => {
   const { id } = route.params
-
+  const user = useContext(userContext)
   const [post, setPost] = useState(null)
   const [comments, setComments] = useState([])
+  const [comment, setComment] = useState("")
 
   const postRef = firestore.doc(`posts/${id}`)
   const commentsRef = postRef.collection("comments")
 
   const docsWithId = (doc) => {
     return { id: doc.id, ...doc.data() }
+  }
+
+  const addComment = (comment) => {
+    commentsRef.add({
+      ...comment,
+      user,
+    })
+  }
+
+  const handleSumbitComment = () => {
+    addComment({ content: comment, createdAt: new Date() })
+    setComment("")
   }
 
   useEffect(() => {
@@ -48,29 +76,27 @@ const Post = ({ route, navigation }) => {
           />
           <Appbar.Content title="Post" subtitle={`Id: ${post.id}`} />
         </Appbar.Header>
+        <PostCard post={post} />
+
         <Card>
-          <Card.Title title={post.title} />
-          <Card.Content>
-            <Text>⭐️ {post.stars}</Text>
-            <Paragraph>{post.content}</Paragraph>
-          </Card.Content>
+          <Card.Title title="Comments" />
           <Card.Content>
             {comments.map((comment) => {
-              console.log(comment)
-              return (
-                <List.Item
-                  key={comment.id}
-                  title={comment.content}
-                  left={() => (
-                    <Avatar.Image
-                      size={36}
-                      source={{ uri: comment.user.photoURL }}
-                    />
-                  )}
-                />
-              )
+              return <CommentCard comment={comment} key={comment.id} />
             })}
           </Card.Content>
+        </Card>
+        <Card>
+          <Card.Content>
+            <TextInput
+              label="New Comment"
+              value={comment}
+              onChangeText={(text) => setComment(text)}
+            />
+          </Card.Content>
+          <Card.Actions>
+            <Button onPress={handleSumbitComment}>Submit</Button>
+          </Card.Actions>
         </Card>
       </ScrollView>
     )

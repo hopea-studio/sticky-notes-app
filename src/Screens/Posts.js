@@ -12,6 +12,7 @@ import {
   Caption,
 } from "react-native-paper"
 import moment from "moment"
+import PostCard from "../components/PostCard"
 
 const Posts = ({ navigation }) => {
   const posts = useContext(postsContext)
@@ -36,34 +37,12 @@ const Posts = ({ navigation }) => {
       {posts &&
         posts.map((post) => {
           return (
-            <Card
+            <PostCard
+              post={post}
               key={post.id}
-              style={styles.card}
-              onPress={() => navigation.navigate("Post", { id: post.id })}
-            >
-              <Card.Title
-                title={post.title}
-                subtitle={post.user.displayName}
-                left={() => (
-                  <Avatar.Image
-                    size={36}
-                    source={{ uri: post.user.photoURL }}
-                  />
-                )}
-              />
-              <Card.Content>
-                <Paragraph>
-                  {post.content.slice(0, 100)} {"...."}
-                </Paragraph>
-                <Caption>
-                  Created At: {moment(post.createdAt.toDate()).calendar()}
-                </Caption>
-              </Card.Content>
-              <Card.Actions style={styles.actions}>
-                <Text>⭐️ {post.stars}</Text>
-                <Text>Comments: {post.comments}</Text>
-              </Card.Actions>
-            </Card>
+              navigation={navigation}
+              slicedContent={100}
+            />
           )
         })}
     </ScrollView>
@@ -72,14 +51,6 @@ const Posts = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   container: { backgroundColor: "#abd1c6" },
-  card: {
-    margin: 5,
-    backgroundColor: "#ffee58",
-  },
-  actions: {
-    paddingHorizontal: 15,
-    justifyContent: "space-between",
-  },
 })
 
 export default Posts
