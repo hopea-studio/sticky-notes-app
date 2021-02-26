@@ -41,7 +41,7 @@ const Posts = ({ navigation }) => {
               post={post}
               key={post.id}
               navigation={navigation}
-              slicedContent={100}
+              slicedContent={50}
             />
           )
         })}

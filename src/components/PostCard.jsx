@@ -28,7 +28,7 @@ const PostCard = ({ post, navigation, slicedContent }) => {
       <Card.Content>
         <Paragraph>
           {post.content.slice(0, slicedContent)}{" "}
-          {post.content.length > 100 && slicedContent && "......"}
+          {post.content.length > slicedContent && slicedContent && "......"}
         </Paragraph>
         <Caption>
           Created At: {moment(post.createdAt.toDate()).calendar()}
