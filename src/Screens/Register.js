@@ -1,8 +1,9 @@
 import React from "react"
 import { TextInput, Button, Appbar } from "react-native-paper"
-import { ScrollView, View, StyleSheet } from "react-native"
+import { ScrollView, View, StyleSheet, Image } from "react-native"
 import { useState } from "react"
 import { auth, createUserProfileDocument } from "../firebase"
+import logo from "../images/logo.png"
 
 const Register = ({ navigation }) => {
   const [displayName, setDisplayName] = useState("")
@@ -36,6 +37,9 @@ const Register = ({ navigation }) => {
         />
         <Appbar.Content title="Register" />
       </Appbar.Header>
+      <View style={styles.logoContainer}>
+        <Image source={logo} style={styles.logo} />
+      </View>
       <View style={styles.formContainer}>
         <TextInput
           autoCapitalize="none"
@@ -87,6 +91,12 @@ const styles = StyleSheet.create({
   },
   button: {
     marginHorizontal: 100,
+  },
+  logoContainer: { alignItems: "center", marginTop: 100 },
+  logo: {
+    width: 100,
+    height: 100,
+    borderRadius: 5,
   },
 })
 

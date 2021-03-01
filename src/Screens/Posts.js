@@ -17,6 +17,10 @@ const Posts = ({ navigation }) => {
   const posts = useContext(postsContext)
   const user = useContext(userContext)
 
+  const navToPage = (navigation, id) => {
+    navigation.navigate("Post", { id: id })
+  }
+
   return (
     <ScrollView style={styles.container}>
       <Appbar.Header>
@@ -41,6 +45,7 @@ const Posts = ({ navigation }) => {
               key={post.id}
               navigation={navigation}
               slicedContent={50}
+              nav={navToPage}
             />
           )
         })}

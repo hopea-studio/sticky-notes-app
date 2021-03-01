@@ -1,8 +1,9 @@
 import React, { useState } from "react"
 //import { signInWithGoogle } from "../firebase"
 import { TextInput, Button, Appbar } from "react-native-paper"
-import { ScrollView, StyleSheet, View } from "react-native"
+import { ScrollView, StyleSheet, View, Image } from "react-native"
 import { auth } from "../firebase"
+import logo from "../images/logo.png"
 
 const Login = ({ navigation }) => {
   const [email, setEmail] = useState("")
@@ -30,7 +31,9 @@ const Login = ({ navigation }) => {
         />
         <Appbar.Content title="Login" />
       </Appbar.Header>
-
+      <View style={styles.logoContainer}>
+        <Image source={logo} style={styles.logo} />
+      </View>
       <View style={styles.formContainer}>
         <TextInput
           autoCapitalize="none"
@@ -74,6 +77,12 @@ const styles = StyleSheet.create({
   },
   button: {
     marginHorizontal: 100,
+  },
+  logoContainer: { alignItems: "center", marginTop: 100 },
+  logo: {
+    width: 100,
+    height: 100,
+    borderRadius: 5,
   },
 })
 
