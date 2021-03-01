@@ -11,7 +11,6 @@ import {
   Text,
   Caption,
 } from "react-native-paper"
-import moment from "moment"
 import PostCard from "../components/PostCard"
 
 const Posts = ({ navigation }) => {

@@ -1,5 +1,5 @@
 import React from "react"
-import { ScrollView, StyleSheet, View } from "react-native"
+import { ScrollView, StyleSheet, View, Image } from "react-native"
 import {
   Avatar,
   Paragraph,
@@ -8,14 +8,19 @@ import {
   Appbar,
   Text,
   Title,
+  Headline,
 } from "react-native-paper"
+import logo from "../images/logo.png"
 
 export default function Landing({ navigation }) {
   return (
     <View style={styles.container}>
       <Appbar></Appbar>
       <View style={styles.title}>
-        <Title>The Secret Cellar</Title>
+        <Headline style={styles.titleText}>Sticky Notes</Headline>
+      </View>
+      <View style={styles.logoContainer}>
+        <Image source={logo} style={styles.logo} />
       </View>
       <View style={styles.body}>
         <Button
@@ -45,6 +50,11 @@ const styles = StyleSheet.create({
   },
   title: {
     alignItems: "center",
+    paddingVertical: 50,
+  },
+  titleText: {
+    fontSize: 30,
+    fontWeight: "700",
   },
   body: {
     flex: 1,
@@ -61,5 +71,11 @@ const styles = StyleSheet.create({
   },
   button: {
     marginHorizontal: 10,
+  },
+  logoContainer: { alignItems: "center" },
+  logo: {
+    width: 300,
+    height: 300,
+    borderRadius: 5,
   },
 })
