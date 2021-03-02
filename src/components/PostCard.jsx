@@ -1,23 +1,11 @@
 import React from "react"
-import {
-  Paragraph,
-  Card,
-  Appbar,
-  Text,
-  List,
-  Avatar,
-  Title,
-  Caption,
-} from "react-native-paper"
-import { ScrollView, StyleSheet } from "react-native"
+import { Paragraph, Card, Text, Avatar, Caption } from "react-native-paper"
+import { StyleSheet } from "react-native"
 import moment from "moment"
 
-const PostCard = ({ post, navigation, slicedContent }) => {
+const PostCard = ({ post, navigation, slicedContent, nav }) => {
   return (
-    <Card
-      style={styles.card}
-      onPress={() => navigation.navigate("Post", { id: post.id })}
-    >
+    <Card style={styles.card} onPress={() => nav && nav(navigation, post.id)}>
       <Card.Title
         title={post.title}
         subtitle={post.user.displayName}

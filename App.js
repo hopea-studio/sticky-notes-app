@@ -22,7 +22,7 @@ const theme = {
     ...DefaultTheme.colors,
     primary: colorHue.background,
     accent: "yellow",
-    background: colorHue.paragraph,
+    background: colorHue.headline,
   },
 }
 

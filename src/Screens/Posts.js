@@ -2,21 +2,16 @@ import React, { useContext } from "react"
 import { postsContext } from "../providers/PostsProvider"
 import { userContext } from "../providers/UsersProvider"
 import { ScrollView, StyleSheet } from "react-native"
-import {
-  Avatar,
-  Paragraph,
-  Card,
-  Button,
-  Appbar,
-  Text,
-  Caption,
-} from "react-native-paper"
-import moment from "moment"
+import { Appbar } from "react-native-paper"
 import PostCard from "../components/PostCard"
 
 const Posts = ({ navigation }) => {
   const posts = useContext(postsContext)
   const user = useContext(userContext)
+
+  const navToPage = (navigation, id) => {
+    navigation.navigate("Post", { id: id })
+  }
 
   return (
     <ScrollView style={styles.container}>
@@ -42,6 +37,7 @@ const Posts = ({ navigation }) => {
               key={post.id}
               navigation={navigation}
               slicedContent={50}
+              nav={navToPage}
             />
           )
         })}
