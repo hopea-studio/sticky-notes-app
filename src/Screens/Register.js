@@ -1,6 +1,6 @@
 import React from "react"
 import { TextInput, Button, Appbar } from "react-native-paper"
-import { ScrollView, View, StyleSheet, Image } from "react-native"
+import { View, StyleSheet, Image } from "react-native"
 import { useState } from "react"
 import { auth, createUserProfileDocument } from "../firebase"
 import logo from "../images/logo.png"

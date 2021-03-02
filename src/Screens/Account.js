@@ -1,16 +1,7 @@
 import React, { useContext } from "react"
-import { ScrollView, StyleSheet, View } from "react-native"
+import { StyleSheet, View } from "react-native"
 import { userContext } from "../providers/UsersProvider"
-import {
-  Avatar,
-  Paragraph,
-  Card,
-  Button,
-  Appbar,
-  Text,
-  Title,
-  Headline,
-} from "react-native-paper"
+import { Avatar, Button, Appbar, Headline } from "react-native-paper"
 import { signOut } from "../firebase"
 
 const Account = ({ navigation }) => {

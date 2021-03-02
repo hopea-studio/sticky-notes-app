@@ -1,21 +1,10 @@
 import React, { useContext } from "react"
-import {
-  Paragraph,
-  Card,
-  Appbar,
-  Text,
-  List,
-  Avatar,
-  Title,
-  Caption,
-  Button,
-  TextInput,
-} from "react-native-paper"
+import { Card, Appbar, Button, TextInput } from "react-native-paper"
 import { ScrollView } from "react-native"
 import { useEffect } from "react"
 import { useState } from "react"
 import { firestore } from "../firebase"
-import moment from "moment"
+
 import PostCard from "../components/PostCard"
 import CommentCard from "../components/CommentCard"
 import { userContext } from "../providers/UsersProvider"

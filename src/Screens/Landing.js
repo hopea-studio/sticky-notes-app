@@ -1,15 +1,6 @@
 import React from "react"
-import { ScrollView, StyleSheet, View, Image } from "react-native"
-import {
-  Avatar,
-  Paragraph,
-  Card,
-  Button,
-  Appbar,
-  Text,
-  Title,
-  Headline,
-} from "react-native-paper"
+import { StyleSheet, View, Image } from "react-native"
+import { Button, Appbar, Headline } from "react-native-paper"
 import logo from "../images/logo.png"
 
 export default function Landing({ navigation }) {

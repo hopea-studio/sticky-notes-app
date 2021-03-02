@@ -1,17 +1,7 @@
 import React from "react"
 import { useState, useContext } from "react"
-import { ScrollView, StyleSheet } from "react-native"
-import {
-  Avatar,
-  Paragraph,
-  Card,
-  Button,
-  Appbar,
-  Text,
-  Caption,
-  Headline,
-  TextInput,
-} from "react-native-paper"
+import { ScrollView } from "react-native"
+import { Button, Appbar, Headline, TextInput } from "react-native-paper"
 import { firestore } from "../firebase"
 import { userContext } from "../providers/UsersProvider"
 

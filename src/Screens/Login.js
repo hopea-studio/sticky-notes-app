@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 //import { signInWithGoogle } from "../firebase"
 import { TextInput, Button, Appbar } from "react-native-paper"
-import { ScrollView, StyleSheet, View, Image } from "react-native"
+import { StyleSheet, View, Image } from "react-native"
 import { auth } from "../firebase"
 import logo from "../images/logo.png"
 

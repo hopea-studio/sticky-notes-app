@@ -1,15 +1,6 @@
 import React from "react"
-import {
-  Paragraph,
-  Card,
-  Appbar,
-  Text,
-  List,
-  Avatar,
-  Title,
-  Caption,
-} from "react-native-paper"
-import { ScrollView, StyleSheet } from "react-native"
+import { Paragraph, Card, Text, Avatar, Caption } from "react-native-paper"
+import { StyleSheet } from "react-native"
 import moment from "moment"
 
 const PostCard = ({ post, navigation, slicedContent, nav }) => {
