@@ -9,7 +9,7 @@ const NewPost = ({ navigation }) => {
   const [title, setTitle] = useState("")
   const [content, setContent] = useState("")
 
-  const user = useContext(userContext)
+  const { user } = useContext(userContext)
 
   const handleSubmit = () => {
     const post = {

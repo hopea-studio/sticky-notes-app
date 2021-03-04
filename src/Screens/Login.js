@@ -1,13 +1,16 @@
-import React, { useState } from "react"
-//import { signInWithGoogle } from "../firebase"
+import React, { useContext, useState } from "react"
+import { signInWithGoogle } from "../firebase"
 import { TextInput, Button, Appbar } from "react-native-paper"
 import { StyleSheet, View, Image } from "react-native"
 import { auth } from "../firebase"
 import logo from "../images/logo.png"
+import { userContext } from "../providers/UsersProvider"
 
 const Login = ({ navigation }) => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+
+  const { loginWithGoogle } = useContext(userContext)
 
   const handleSubmit = async () => {
     try {
@@ -54,8 +57,14 @@ const Login = ({ navigation }) => {
         <Button mode="contained" onPress={handleSubmit} style={styles.button}>
           Login
         </Button>
+        <Button
+          mode="contained"
+          onPress={loginWithGoogle}
+          style={styles.button}
+        >
+          Login with Google
+        </Button>
       </View>
-      {/* <Button title="loginWithGoogle" onPress={signInWithGoogle} /> */}
     </View>
   )
 }
@@ -77,6 +86,7 @@ const styles = StyleSheet.create({
   },
   button: {
     marginHorizontal: 100,
+    marginVertical: 5,
   },
   logoContainer: { alignItems: "center", marginTop: 100 },
   logo: {

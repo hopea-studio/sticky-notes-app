@@ -17,7 +17,7 @@ import NewPostScreen from "./Screens/NewPost"
 const Stack = createStackNavigator()
 
 export default function App() {
-  const user = useContext(userContext)
+  const { user } = useContext(userContext)
 
   if (!user) {
     return (

@@ -11,7 +11,7 @@ import { userContext } from "../providers/UsersProvider"
 
 const Post = ({ route, navigation }) => {
   const { id } = route.params
-  const user = useContext(userContext)
+  const { user } = useContext(userContext)
   const [post, setPost] = useState(null)
   const [comments, setComments] = useState([])
   const [comment, setComment] = useState("")
@@ -63,7 +63,7 @@ const Post = ({ route, navigation }) => {
               navigation.goBack()
             }}
           />
-          <Appbar.Content title="Post" subtitle={`Id: ${post.id}`} />
+          <Appbar.Content title="Post" subtitle={post.title} />
         </Appbar.Header>
         <PostCard post={post} />
 

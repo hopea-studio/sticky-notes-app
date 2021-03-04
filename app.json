@@ -17,7 +17,14 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.hopea.stickynotes",
+      "config": {
+        "googleSignIn": {
+          "reservedClientId": "com.googleusercontent.apps.392305382704-4t0t0so4h8piaonb205djnkc12rsasll"
+        }
+      },
+      "googleServicesFile": "./GoogleService-Info.plist"
     },
     "android": {
       "adaptiveIcon": {

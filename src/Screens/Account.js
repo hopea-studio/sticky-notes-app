@@ -5,7 +5,7 @@ import { Avatar, Button, Appbar, Headline } from "react-native-paper"
 import { signOut } from "../firebase"
 
 const Account = ({ navigation }) => {
-  const user = useContext(userContext)
+  const { user } = useContext(userContext)
   return (
     user && (
       <View style={styles.container}>
